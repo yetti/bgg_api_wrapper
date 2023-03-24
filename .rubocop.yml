@@ -1,0 +1,42 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - node_modules/**/*
+    - public/**/*
+    - vendor/**/*
+    - db/**/*
+    - bin/**/*
+    - tmp/**/*
+    - config/initializers/devise.rb
+
+Rails:
+  Enabled: true
+Rails/FilePath:
+  Enabled: false
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+
+RSpec:
+  Enabled: true
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Bundler/DuplicatedGem:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
