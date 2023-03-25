@@ -10,35 +10,17 @@ RSpec.describe BggApiWrapper::SearchResult do
   let(:game_hash) do
     {
       "objectid" => 123,
-      "name" => {
-        "__content__" => "Board Game"
-      },
+      "name" => "Board Game",
       "yearpublished" => "2020"
     }
   end
 
   describe "#to_s" do
-    context "when the XML response doesn't have attributes in the `name` node" do
-      let(:game_hash) do
-        {
-          "objectid" => 123,
-          "name" => "Board Game",
-          "yearpublished" => 2020
-        }
-      end
-
-      it "returns the title" do
-        expect(result.to_s).to include("Board Game")
-      end
-    end
-
     context "when published date is nil" do
       let(:game_hash) do
         {
           "objectid" => 123,
-          "name" => {
-            "__content__" => "Board Game"
-          },
+          "name" => "Board Game",
           "yearpublished" => nil
         }
       end

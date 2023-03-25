@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
+require_relative "base_item"
+
 module BggApiWrapper
-  class SearchResult
-    attr_reader :id, :title, :published
+  class SearchResult < BaseItem
+    def initialize(data)
+      super(data)
 
-    def initialize(game)
-      @id = game["objectid"]
-      @title = game["name"]["__content__"] || game["name"]
-      @published = game["yearpublished"] || "unknown"
-    end
-
-    def to_s
-      "(#{id}) #{title} - #{published}"
+      if @published.blank?
+        @published = "unknown"
+      end
     end
   end
 end
