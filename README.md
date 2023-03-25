@@ -2,6 +2,10 @@
 
 Wrapper for the Board Game Geek XML API v2.
 
+See Board Game Geek XML
+API [Terms of Service](https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use) with regards to
+content usage.
+
 ## Installation
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right
