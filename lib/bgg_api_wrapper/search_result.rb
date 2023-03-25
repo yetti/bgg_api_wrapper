@@ -7,7 +7,7 @@ module BggApiWrapper
     def initialize(data)
       super(data)
 
-      if @published.blank?
+      if @published.nil?
         @published = "unknown"
       end
     end

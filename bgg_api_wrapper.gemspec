@@ -37,7 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rspec", "~> 3.0"
 
   spec.add_dependency "faraday", "~> 2.7"
-  spec.add_dependency "faraday-xml", "~> 0.2.1"
   spec.add_dependency "faraday-retry", "~> 2.1"
   spec.add_dependency "nokogiri", "~> 1.14"
 

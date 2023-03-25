@@ -60,14 +60,16 @@ RSpec.describe BggApiWrapper, :vcr do
         expect(results.length).to eq 2
       end
 
-      it "will return the information for Catan" do
+      it "will return the information for CATAN" do
         game = results.first
         expect(game.id).to eq 13
+        expect(game.title).to eq "CATAN"
       end
 
       it "will return the information for Scythe" do
         game = results[1]
         expect(game.id).to eq 169786
+        expect(game.title).to eq "Scythe"
       end
     end
   end

@@ -7,18 +7,18 @@ module BggApiWrapper
     def initialize(data)
       super(data)
 
-      @description = data["description"]
-      @thumbnail = data["thumbnail"]
-      @image = data["image"]
+      @description = data.xpath("./description").text
+      @thumbnail = data.xpath("./thumbnail").text
+      @image = data.xpath("./image").text
 
-      @min_players = data["minplayers"]
-      @max_players = data["maxplayers"]
+      @min_players = data.xpath("./minplayers").text
+      @max_players = data.xpath("./maxplayers").text
 
-      @playing_time = data["playingtime"]
-      @min_play_time = data["minplaytime"]
-      @max_play_time = data["maxplaytime"]
+      @playing_time = data.xpath("./playingtime").text
+      @min_play_time = data.xpath("./minplaytime").text
+      @max_play_time = data.xpath("./maxplaytime").text
 
-      @age = data["age"]
+      @age = data.xpath("./age").text
     end
   end
 end
