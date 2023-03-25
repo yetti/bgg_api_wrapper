@@ -2,7 +2,7 @@
 
 require "faraday"
 require "faraday/retry"
-require "faraday/xml"
+require "nokogiri"
 
 require_relative "bgg_api_wrapper/version"
 require_relative "bgg_api_wrapper/search_result"
@@ -68,12 +68,8 @@ module BggApiWrapper
     # For single results, API will not return an array, so we need to wrap
     # single result in an array before it gets mapped to the appropriate object.
     def normalize_results(response)
-      boardgames = response.body["boardgames"]["boardgame"]
-      unless boardgames.is_a?(Array)
-        boardgames = [boardgames]
-      end
-
-      boardgames
+      doc = Nokogiri::XML(response.body)
+      doc.xpath(".//boardgames/boardgame")
     end
 
     def make_request(path, params)
@@ -92,7 +88,6 @@ module BggApiWrapper
       Faraday.new(
         url: API_BASE_URL
       ) do |f|
-        f.response :xml
         f.request :retry, retry_options
       end
     end

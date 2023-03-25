@@ -5,24 +5,32 @@ require_relative "../../spec_helper"
 require "bgg_api_wrapper/search_result"
 
 RSpec.describe BggApiWrapper::SearchResult do
-  subject(:result) { described_class.new(game_hash) }
+  subject(:result) do
+    doc = Nokogiri::XML(game_xml)
+    described_class.new(doc.xpath(".//boardgames/boardgame"))
+  end
 
-  let(:game_hash) do
-    {
-      "objectid" => 123,
-      "name" => "Board Game",
-      "yearpublished" => "2020"
-    }
+  let(:game_xml) do
+    <<~GAMEXML
+      <boardgames termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+        <boardgame objectid="110308">
+          <name primary="true">7 Wonders: Catan</name>
+          <yearpublished>2011</yearpublished>
+        </boardgame>
+      </boardgames>
+    GAMEXML
   end
 
   describe "#to_s" do
     context "when published date is nil" do
-      let(:game_hash) do
-        {
-          "objectid" => 123,
-          "name" => "Board Game",
-          "yearpublished" => nil
-        }
+      let(:game_xml) do
+        <<~GAMEXML
+          <boardgames termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+            <boardgame objectid="110308">
+              <name primary="true">7 Wonders: Catan</name>
+            </boardgame>
+          </boardgames>
+        GAMEXML
       end
 
       it "returns 'unknown' as the published date" do

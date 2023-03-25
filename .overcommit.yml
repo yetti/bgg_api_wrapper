@@ -37,6 +37,15 @@ PreCommit:
     enabled: true
     command: ["bundle", "exec", "rubocop", "-A", "--parallel"]
 
+  BundleAudit:
+    enabled: true
+    command: ["bundle", "exec", "bundle", "audit", "check", "--update"]
+
 CommitMsg:
   CapitalizedSubject:
     enabled: false
+
+PrePush:
+  RSpec:
+    enabled: true
+    command: ["bundle", "exec", "rspec"]
