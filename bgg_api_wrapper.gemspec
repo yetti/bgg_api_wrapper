@@ -42,7 +42,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "debug", ">= 1.0.0"
 
-  spec.add_development_dependency "brakeman"
   spec.add_development_dependency "bundler-audit"
 
   spec.add_development_dependency "standard", "~> 1.0"

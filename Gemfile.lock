@@ -19,7 +19,6 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    brakeman (5.4.1)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
@@ -120,7 +119,6 @@ PLATFORMS
 
 DEPENDENCIES
   bgg_api_wrapper!
-  brakeman
   bundler-audit
   debug (>= 1.0.0)
   rubocop
